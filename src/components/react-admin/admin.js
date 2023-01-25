@@ -7,11 +7,13 @@ import { CustomerList, CustomerEdit, CustomerCreate } from 'components/react-adm
 //TODO eliminar las dos lineas siguientes
 import { PostList, PostEdit, PostCreate } from 'components/react-admin/posts';
 import { MigrationList, MigrationEdit, MigrationCreate } from 'components/react-admin/migrations';
+import { StationList } from 'components/react-admin/stations';
 
 import PostIcon from '@mui/icons-material/Book';
 import UserIcon from '@mui/icons-material/Group';
 import MigrationIcon from '@mui/icons-material/Storage';
 import CustomerIcon from '@mui/icons-material/SupportAgent';
+import StationIcon from '@mui/icons-material/ChargingStationSharp'
 
 import { AdminLayout } from 'components/react-admin/adminLayout';
 
@@ -35,6 +37,7 @@ const RAdmin = () => (
       list={MigrationList} icon={MigrationIcon} edit={MigrationEdit} create={MigrationCreate}/>
     <Resource name="posts" list={PostList} edit={PostEdit} create={PostCreate} icon={PostIcon} />
     <Resource name="users" list={UserList} icon={UserIcon} recordRepresentation="name" />
+    <Resource name="stations" list={StationList} icon={StationIcon} />
   </Admin>
 )
 
