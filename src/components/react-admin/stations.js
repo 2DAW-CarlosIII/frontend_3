@@ -5,7 +5,8 @@ import {
     Datagrid,
     TextField,
     ReferenceField,
-    TextInput
+    TextInput,
+    NumberField
   } from 'react-admin';
 
 import { useRecordContext} from 'react-admin';
@@ -31,6 +32,7 @@ export const StationList = () => {
         <Datagrid bulkActionButtons={false} >
           <TextField source="name" />
           <TextField source="direction" />
+          <NumberField source="available_bikes"/>
         </Datagrid>
       )}
     </List>
