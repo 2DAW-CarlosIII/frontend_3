@@ -1,26 +1,26 @@
 // in src/components/react-admin/bicis.js
 import {
-    List,
-    SimpleList,
-    Datagrid,
-    TextField,
-    ReferenceField,
-    TextInput,
-    NumberField,
-    ImageField,
-    EditButton,
-    Edit,
-    Create,
-    SimpleForm,
-    ReferenceInput,
-    NumberInput
-  } from 'react-admin';
+  List,
+  SimpleList,
+  Datagrid,
+  TextField,
+  ReferenceField,
+  TextInput,
+  NumberField,
+  ImageField,
+  EditButton,
+  Edit,
+  Create,
+  SimpleForm,
+  ReferenceInput,
+  NumberInput
+} from 'react-admin';
 
-import { useRecordContext} from 'react-admin';
+import { useRecordContext } from 'react-admin';
 import { useMediaQuery } from '@mui/material';
 
 const biciFilters = [
-    <TextInput source="q" label="Search" alwaysOn />
+  <TextInput source="q" label="Search" alwaysOn />
 ];
 
 export const BiciList = () => {
@@ -40,7 +40,7 @@ export const BiciList = () => {
         <Datagrid bulkActionButtons={false} >
           <TextField source="tipo" />
           <TextField source="descripcion" />
-          <ImageField source="imagen" title="descripcion"/>
+          <ImageField source="imagen" title="descripcion" />
           <EditButton />
         </Datagrid>
       )}
@@ -50,26 +50,26 @@ export const BiciList = () => {
 
 export const BiciCreate = () => (
   <Create>
-      <SimpleForm>
-        <TextInput source="tipo" />
-        <TextInput source="descripcion" />
-        <TextInput source="imagen" />
-      </SimpleForm>
+    <SimpleForm>
+      <TextInput source="tipo" />
+      <TextInput source="descripcion" />
+      <TextInput source="imagen" />
+    </SimpleForm>
   </Create>
-  );
+);
 
-  const BiciTitle = () => {
-    const record = useRecordContext();
-    return <span>Vehiculo {record ? `"${record.tipo} ${record.descripcion}"` : ''}</span>;
-  };
-  
-  export const BiciEdit = () => (
-      <Edit title={<BiciTitle />}>
-      <SimpleForm>
-          <TextInput source="id" disabled />
-          <TextInput source="tipo" />
-          <TextInput source="descripcion" />
-          <TextInput source="imagen" />
-      </SimpleForm>
-      </Edit>
-  );
+const BiciTitle = () => {
+  const record = useRecordContext();
+  return <span>Vehiculo {record ? `"${record.tipo} ${record.descripcion}"` : ''}</span>;
+};
+
+export const BiciEdit = () => (
+  <Edit title={<BiciTitle />}>
+    <SimpleForm>
+      <TextInput source="id" disabled />
+      <TextInput source="tipo" />
+      <TextInput source="descripcion" />
+      <TextInput source="imagen" />
+    </SimpleForm>
+  </Edit>
+);
