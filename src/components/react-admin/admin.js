@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Admin, Resource } from 'react-admin';
 import jsonServerProvider from 'ra-data-json-server';
 import jsonapiClient from 'ra-jsonapi-client';
@@ -19,6 +20,9 @@ import BiciIcon from '@mui/icons-material/PedalBike';
 
 import { AdminLayout } from 'components/react-admin/adminLayout';
 
+import { default as AuthProvider } from 'components/react-admin/authProvider';
+import { default as Login } from 'pages/login'
+
 //PARA PHP CRUD API
 //
 //const dataProvider = jsonServerProvider('http://encuentro.test/api/records');
@@ -27,22 +31,37 @@ import { AdminLayout } from 'components/react-admin/adminLayout';
 //
 const dataProvider = jsonapiClient('http://encuentro.test/api');
 
-const RAdmin = () => (
-  <Admin
-    basename="/dashboard"
-    dataProvider={dataProvider}
-    layout={AdminLayout}
-  >
-    <Resource name="customers" list={CustomerList} icon={CustomerIcon}
-      edit={CustomerEdit} create={CustomerCreate} />
-    <Resource name="migrations"
-      list={MigrationList} icon={MigrationIcon} edit={MigrationEdit} create={MigrationCreate} />
-    <Resource name="posts" list={PostList} edit={PostEdit} create={PostCreate} icon={PostIcon} />
-    <Resource name="users" list={UserList} icon={UserIcon} recordRepresentation="name" />
-    <Resource name="stations" list={StationList} icon={StationIcon} />
-    <Resource name="vehiculos" list={BiciList} icon={BiciIcon} create={BiciCreate}
-      edit={BiciEdit} />
-  </Admin>
-)
+const RAdmin = () => {
 
+  function handleDataProvider(dataProvider) {
+    setDataProvider(() => dataProvider)
+  }
+
+  const myLogin = <Login handleDataProvider={handleDataProvider} />
+  const API_URL = `${process.env.REACT_APP_BACKEND_URL}/api`
+  const [dataProvider, setDataProvider] = useState(null)
+
+  if (!dataProvider) {
+    handleDataProvider(jsonapiClient(API_URL))
+  }
+
+  return (
+    <Admin
+      authProvider={AuthProvider}
+      basename="/dashboard"
+      dataProvider={dataProvider}
+      loginPage={myLogin}
+    >
+      <Resource name="customers" list={CustomerList} icon={CustomerIcon}
+        edit={CustomerEdit} create={CustomerCreate} />
+      <Resource name="migrations"
+        list={MigrationList} icon={MigrationIcon} edit={MigrationEdit} create={MigrationCreate} />
+      <Resource name="posts" list={PostList} edit={PostEdit} create={PostCreate} icon={PostIcon} />
+      <Resource name="users" list={UserList} icon={UserIcon} recordRepresentation="name" />
+      <Resource name="stations" list={StationList} icon={StationIcon} />
+      <Resource name="vehiculos" list={BiciList} icon={BiciIcon} create={BiciCreate}
+        edit={BiciEdit} />
+    </Admin>
+  )
+}
 export default RAdmin;
