@@ -38,7 +38,7 @@ export const BiciList = () => {
         </SimpleList>
       ) : (
         <Datagrid bulkActionButtons={false} >
-          <TextField source="tipo" />
+          <ReferenceField source="tipoVehiculo_id" reference="tipoVehiculos" />
           <TextField source="descripcion" />
           <ImageField source="imagen" title="descripcion" />
           <EditButton />
@@ -51,7 +51,7 @@ export const BiciList = () => {
 export const BiciCreate = () => (
   <Create>
     <SimpleForm>
-      <TextInput source="tipo" />
+    <ReferenceInput source="tipoVehiculo_id" reference="tipoVehiculos" />
       <TextInput source="descripcion" />
       <TextInput source="imagen" />
     </SimpleForm>
@@ -66,7 +66,7 @@ const BiciTitle = () => {
 export const BiciEdit = () => (
   <Edit title={<BiciTitle />}>
     <SimpleForm>
-      <TextInput source="id" disabled />
+    <ReferenceInput source="tipoVehiculo_id" reference="tipoVehiculos" />
       <TextInput source="tipo" />
       <TextInput source="descripcion" />
       <TextInput source="imagen" />
