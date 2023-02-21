@@ -20,13 +20,13 @@ function Home() {
           <>
             <NavLink
               to="/login"
-              className="ml-4 text-sm text-white underline"
+              className="ml-4 text-sm text-black underline"
             >
               Login
             </NavLink>
             <NavLink
               to="/register"
-              className="ml-4 text-sm text-white underline"
+              className="ml-4 text-sm text-black underline"
             >
               Register
             </NavLink>
