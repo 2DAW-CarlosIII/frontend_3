@@ -6,14 +6,20 @@ import {
   TextField,
   ReferenceField,
   TextInput,
-  NumberField
+  NumberField,
+  SelectInput
 } from 'react-admin';
 
 import { useRecordContext } from 'react-admin';
 import { useMediaQuery } from '@mui/material';
 
 const stationFilters = [
-  <TextInput source="q" label="Search" alwaysOn />
+  <SelectInput source="ciudad" choices={[
+    { id: 'santander', name: 'Santander' },
+    { id: 'seville', name: 'Sevilla' },
+    { id: 'valence', name: 'Valencia' },
+    { id: 'ljubljana', name: 'Liubiana'}
+]} alwaysOn />
 ];
 
 export const StationList = () => {
