@@ -13,7 +13,7 @@ import {
   Create,
   SimpleForm,
   ReferenceInput,
-  NumberInput
+  SelectInput
 } from 'react-admin';
 
 import { useRecordContext } from 'react-admin';
@@ -38,7 +38,9 @@ export const BiciList = () => {
         </SimpleList>
       ) : (
         <Datagrid bulkActionButtons={false} >
-          <ReferenceField source="tipoVehiculo_id" reference="tipoVehiculos" />
+          <ReferenceField source="tipoVehiculo_id" reference="tipoVehiculos">
+            <TextField source="tipo_vehiculo" />
+          </ReferenceField>
           <TextField source="descripcion" />
           <ImageField source="imagen" title="descripcion" />
           <EditButton />
@@ -51,7 +53,9 @@ export const BiciList = () => {
 export const BiciCreate = () => (
   <Create>
     <SimpleForm>
-    <ReferenceInput source="tipoVehiculo_id" reference="tipoVehiculos" />
+      <ReferenceInput source="tipoVehiculo_id" reference="tipoVehiculos">
+        <SelectInput optionText="tipo_vehiculo"/>
+      </ReferenceInput>
       <TextInput source="descripcion" />
       <TextInput source="imagen" />
     </SimpleForm>
@@ -66,7 +70,9 @@ const BiciTitle = () => {
 export const BiciEdit = () => (
   <Edit title={<BiciTitle />}>
     <SimpleForm>
-    <ReferenceInput source="tipoVehiculo_id" reference="tipoVehiculos" />
+    <ReferenceInput source="tipoVehiculo_id" reference="tipoVehiculos">
+        <SelectInput optionText="tipo_vehiculo"/>
+      </ReferenceInput>
       <TextInput source="tipo" />
       <TextInput source="descripcion" />
       <TextInput source="imagen" />
