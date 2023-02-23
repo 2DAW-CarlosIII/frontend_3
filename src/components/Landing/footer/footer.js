@@ -8,7 +8,7 @@ import twitter from './twitter.png';
 const Footer = () => (
 
     <div className="pb-2 bg-dark text-white text-center">
-        <footer className>
+        <footer>
             <div className="col-12 f">
                 <a className="enlacesinteres" href="#avisolegal">Aviso legal</a>
                 <a className="enlacesinteres" href="#politicaprivacidad">Política de privacidad</a>
