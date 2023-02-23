@@ -73,7 +73,6 @@ export const BiciEdit = () => (
     <ReferenceInput source="tipoVehiculo_id" reference="tipoVehiculos">
         <SelectInput optionText="tipo_vehiculo"/>
       </ReferenceInput>
-      <TextInput source="tipo" />
       <TextInput source="descripcion" />
       <TextInput source="imagen" />
     </SimpleForm>
