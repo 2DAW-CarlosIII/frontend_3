@@ -18,7 +18,8 @@ const stationFilters = [
     { id: 'santander', name: 'Santander' },
     { id: 'seville', name: 'Sevilla' },
     { id: 'valence', name: 'Valencia' },
-    { id: 'ljubljana', name: 'Liubiana'}
+    { id: 'ljubljana', name: 'Liubiana'},
+    { id: 'bruxelles', name: 'Bruselas'}
 ]} alwaysOn />
 ];
 
