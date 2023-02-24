@@ -5,7 +5,7 @@ import jsonapiClient from 'ra-jsonapi-client';
 import { UserList } from 'components/react-admin/users';
 import { CustomerList, CustomerEdit, CustomerCreate } from 'components/react-admin/customers';
 
-import { StationList } from 'components/react-admin/stations';
+import { StationList, StationCreate, StationEdit } from 'components/react-admin/stations';
 import { BiciList, BiciCreate, BiciEdit } from 'components/react-admin/bicis';
 import { TipoVehiculoList, TipoVehiculoCreate, TipoVehiculoEdit } from 'components/react-admin/tipovehiculo';
 
@@ -57,7 +57,8 @@ const RAdmin = () => {
       <Resource name="customers" list={CustomerList} icon={CustomerIcon}
         edit={CustomerEdit} create={CustomerCreate} />
       <Resource name="users" list={UserList} icon={UserIcon} recordRepresentation="name" />
-      <Resource name="stations" list={StationList} icon={StationIcon} />
+      <Resource name="stations" list={StationList} icon={StationIcon}
+      create={StationCreate} edit={StationEdit} />
       <Resource name="tipoVehiculos" list={TipoVehiculoList} icon={TipoVehiculoIcon}
       create={TipoVehiculoCreate} edit={TipoVehiculoEdit}/>
       <Resource name="vehiculos" list={BiciList} icon={BiciIcon} create={BiciCreate}
