@@ -7,20 +7,18 @@ import {
   ReferenceField,
   TextInput,
   NumberField,
-  SelectInput
+  SelectInput,
+  Edit,
+  Create,
+  SimpleForm,
+  EditButton
 } from 'react-admin';
 
 import { useRecordContext } from 'react-admin';
 import { useMediaQuery } from '@mui/material';
 
 const stationFilters = [
-  <SelectInput source="ciudad" choices={[
-    { id: 'santander', name: 'Santander' },
-    { id: 'seville', name: 'Sevilla' },
-    { id: 'valence', name: 'Valencia' },
-    { id: 'ljubljana', name: 'Liubiana'},
-    { id: 'bruxelles', name: 'Bruselas'}
-]} alwaysOn />
+  <TextInput source="q" label="Search" alwaysOn />
 ];
 
 export const StationList = () => {
@@ -34,14 +32,47 @@ export const StationList = () => {
           tertiaryText={(record) => record.direction}
           linkType={(record) => 'show'}
         >
+          <EditButton />
         </SimpleList>
       ) : (
         <Datagrid bulkActionButtons={false} >
-          <TextField source="name" />
-          <TextField source="direction" />
-          <NumberField source="available_bikes" />
+          <TextField source="nombre" />
+          <TextField source="ciudad" />
+          <TextField source="direccion" />
+          <NumberField source="latitud" />
+          <NumberField source="longitud" />
+          <EditButton />
         </Datagrid>
       )}
     </List>
   );
 }
+
+export const StationCreate = () => (
+  <Create>
+    <SimpleForm>
+      <TextInput source="nombre" />
+      <TextInput source="ciudad" />
+      <TextInput source="direccion" />
+      <TextInput source="latitud" />
+      <TextInput source="longitud" />
+    </SimpleForm>
+  </Create>
+);
+
+const StationTitle = () => {
+  const record = useRecordContext();
+  return <span>Vehiculo {record ? `"${record.nombre} ${record.direccion}"` : ''}</span>;
+};
+
+export const StationEdit = () => (
+  <Edit title={<StationTitle />}>
+    <SimpleForm>
+      <TextInput source="nombre" />
+      <TextInput source="ciudad" />
+      <TextInput source="direccion" />
+      <TextInput source="latitud" />
+      <TextInput source="longitud" />
+    </SimpleForm>
+  </Edit>
+);

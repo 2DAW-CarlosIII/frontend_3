@@ -41,6 +41,9 @@ export const BiciList = () => {
           <ReferenceField source="tipoVehiculo_id" reference="tipoVehiculos">
             <TextField source="tipo_vehiculo" />
           </ReferenceField>
+          <ReferenceField source="station_id" reference="stations">
+            <TextField source="nombre" />
+          </ReferenceField>
           <TextField source="descripcion" />
           <ImageField source="imagen" title="descripcion" />
           <EditButton />
@@ -55,6 +58,9 @@ export const BiciCreate = () => (
     <SimpleForm>
       <ReferenceInput source="tipoVehiculo_id" reference="tipoVehiculos">
         <SelectInput optionText="tipo_vehiculo"/>
+      </ReferenceInput>
+      <ReferenceInput source="station_id" reference="stations">
+        <SelectInput optionText="nombre"/>
       </ReferenceInput>
       <TextInput source="descripcion" />
       <TextInput source="imagen" />
@@ -72,6 +78,9 @@ export const BiciEdit = () => (
     <SimpleForm>
     <ReferenceInput source="tipoVehiculo_id" reference="tipoVehiculos">
         <SelectInput optionText="tipo_vehiculo"/>
+      </ReferenceInput>
+      <ReferenceInput source="station_id" reference="stations">
+        <SelectInput optionText="nombre"/>
       </ReferenceInput>
       <TextInput source="descripcion" />
       <TextInput source="imagen" />
